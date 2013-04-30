@@ -319,7 +319,7 @@ abstract class Frontend extends \Controller
 			{
 				header('HTTP/1.1 404 Not Found');
 				\System::log('No root page found (host "' . $host . '", language "'. \Input::get('language') .'"', 'Frontend getRootPageFromUrl()', TL_ERROR);
-				die('No root page found');
+				die('No root page found'); # FIXME: add an error screen with a link to Environment::get('base')
 			}
 		}
 
@@ -336,7 +336,7 @@ abstract class Frontend extends \Controller
 			{
 				header('HTTP/1.1 404 Not Found');
 				\System::log('No root page found (host "' . \Environment::get('host') . '", languages "'.implode(', ', \Environment::get('httpAcceptLanguage')).'")', 'Frontend getRootPageFromUrl()', TL_ERROR);
-				die('No root page found');
+				die('No root page found'); # FIXME: add an error screen
 			}
 
 			// Redirect to the language root (e.g. en/)
