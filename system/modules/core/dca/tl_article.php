@@ -148,7 +148,7 @@ $GLOBALS['TL_DCA']['tl_article'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array('protected'),
-		'default'                     => '{title_legend},title,alias,author;{layout_legend},inColumn,keywords;{teaser_legend:hide},teaserCssID,showTeaser,teaser;{syndication_legend},printable;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{publish_legend},published,start,stop'
+		'default'                     => '{title_legend},title,alias,author;{layout_legend},inColumn,keywords;{teaser_legend:hide},teaserCssID,showTeaser,teaser;{syndication_legend},printable;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{publish_legend},published,start,stop'
 	),
 
 	// Subpalettes
@@ -267,6 +267,15 @@ $GLOBALS['TL_DCA']['tl_article'] = array
 			'eval'                    => array('multiple'=>true),
 			'reference'               => &$GLOBALS['TL_LANG']['tl_article'],
 			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'customTpl' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_article']['customTpl'],
+			'exclude'                 => true,
+			'inputType'               => 'select',
+			'options_callback'        => array('tl_article', 'getArticleTemplates'),
+			'eval'                    => array('includeBlankOption'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(64) NOT NULL default ''"
 		),
 		'protected' => array
 		(
@@ -588,6 +597,12 @@ class tl_article extends Backend
 			$varValue = standardize(String::restoreBasicEntities($dc->activeRecord->title));
 		}
 
+		// Add a prefix to reserved names (see #6066)
+		if (in_array($varValue, array('top', 'wrapper', 'header', 'container', 'main', 'left', 'right', 'footer')))
+		{
+			$varValue = 'article-' . $varValue;
+		}
+
 		$objAlias = $this->Database->prepare("SELECT id FROM tl_article WHERE id=? OR alias=?")
 								   ->execute($dc->id, $varValue);
 
@@ -600,12 +615,6 @@ class tl_article extends Backend
 			}
 
 			$varValue .= '-' . $dc->id;
-		}
-
-		// Add a prefix to reserved names (see #6066)
-		if (in_array($varValue, array('top', 'wrapper', 'header', 'container', 'main', 'left', 'right', 'footer')))
-		{
-			$varValue = 'article-' . $varValue;
 		}
 
 		return $varValue;
@@ -677,6 +686,16 @@ class tl_article extends Backend
 		}
 
 		return array_values(array_unique($arrSections));
+	}
+
+
+	/**
+	 * Return all module templates as array
+	 * @return array
+	 */
+	public function getArticleTemplates()
+	{
+		return $this->getTemplateGroup('mod_');
 	}
 
 

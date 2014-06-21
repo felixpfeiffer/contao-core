@@ -1252,7 +1252,7 @@ Website: %s
 
 Het account is geblokkeerd voor %d minuten, omdat de gebruiker drie keer op rij een ongeldig wachtwoord heeft ingevoerd. Na verloop van deze tijd zal het account automatisch worden ontgrendeld.
 
-Deze e-mail is aangemaakt door Contao. U kunt niet rechtstreeks hierop antwoorden. ?
+Deze e-mail is aangemaakt door Contao. U kunt niet rechtstreeks hierop antwoorden.
 </target>
       </trans-unit>
       <trans-unit id="MSC.toggleMobile.0">
@@ -1761,7 +1761,7 @@ Deze e-mail is aangemaakt door Contao. U kunt niet rechtstreeks hierop antwoorde
       </trans-unit>
       <trans-unit id="MSC.coreOnlyMode">
         <source>Contao is currently running in &lt;strong&gt;safe mode&lt;/strong&gt;, in which only core modules are loaded, to prevent possible incompatibilities with third-party extensions (e.g. after a Live Update). After you have checked the installed extensions, you can disable the safe mode again.</source>
-        <target>Contao draait momenteel in de &lt;strong&gt;veilige modus&lt;/strong&gt;, waarin alleen core modules worden geladen. Deze instelling is bijvoorbeeld geactiveerd na een Live Update om mogelijke incompatibiliteit te voorkomen met third-party extensies. U kunt dit deactiveren in de back-end instellingen na controle van de geïnstalleerde third-party extensies.</target>
+        <target>Contao draait momenteel in de &lt;strong&gt;veilige modus&lt;/strong&gt;, waarin alleen core modules worden geladen om mogelijke incompatibiliteit te voorkomen met third-party extensies (b.v. na een Live Update). Na controle van de geïnstalleerde extensies kunt u de veilige modus uitschakelen.</target>
       </trans-unit>
       <trans-unit id="MSC.coreOnlyOff">
         <source>Disable</source>
@@ -1978,6 +1978,10 @@ Deze e-mail is aangemaakt door Contao. U kunt niet rechtstreeks hierop antwoorde
       <trans-unit id="MSC.totalPages">
         <source>Page %s of %s</source>
         <target>Pagina %s van %s</target>
+      </trans-unit>
+      <trans-unit id="MSC.global">
+        <source>global</source>
+        <target>globaal</target>
       </trans-unit>
       <trans-unit id="MSC.fileUploaded">
         <source>File %s uploaded successfully.</source>

@@ -40,7 +40,7 @@ namespace Contao;
  * @author    Leo Feyer <https://github.com/leofeyer>
  * @copyright Leo Feyer 2005-2014
  */
-abstract class Widget extends \Template\Base
+abstract class Widget extends \BaseTemplate
 {
 
 	/**
@@ -1068,7 +1068,7 @@ abstract class Widget extends \Template\Base
 	 */
 	protected function isChecked($arrOption)
 	{
-		if (empty($this->varValue) && $arrOption['default'])
+		if (empty($this->varValue) && empty($_POST) && $arrOption['default'])
 		{
 			return static::optionChecked(1, 1);
 		}
@@ -1086,7 +1086,7 @@ abstract class Widget extends \Template\Base
 	 */
 	protected function isSelected($arrOption)
 	{
-		if (empty($this->varValue) && $arrOption['default'])
+		if (empty($this->varValue) && empty($_POST) && $arrOption['default'])
 		{
 			return static::optionSelected(1, 1);
 		}

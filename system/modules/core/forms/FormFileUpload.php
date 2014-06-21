@@ -237,16 +237,6 @@ class FormFileUpload extends \Widget implements \uploadable
 					$this->Files->move_uploaded_file($file['tmp_name'], $strUploadFolder . '/' . $file['name']);
 					$this->Files->chmod($strUploadFolder . '/' . $file['name'], \Config::get('defaultFileChmod'));
 
-					$_SESSION['FILES'][$this->strName] = array
-					(
-						'name' => $file['name'],
-						'type' => $file['type'],
-						'tmp_name' => TL_ROOT . '/' . $strUploadFolder . '/' . $file['name'],
-						'error' => $file['error'],
-						'size' => $file['size'],
-						'uploaded' => true
-					);
-
 					// Generate the DB entries
 					$strFile = $strUploadFolder . '/' . $file['name'];
 					$objFile = \FilesModel::findByPath($strFile);
@@ -261,11 +251,23 @@ class FormFileUpload extends \Widget implements \uploadable
 					}
 					else
 					{
-						\Dbafs::addResource($strFile);
+						$objFile = \Dbafs::addResource($strFile);
 					}
 
 					// Update the hash of the target folder
 					\Dbafs::updateFolderHashes($strUploadFolder);
+
+					// Add the session entry (see #6986)
+					$_SESSION['FILES'][$this->strName] = array
+					(
+						'name'     => $file['name'],
+						'type'     => $file['type'],
+						'tmp_name' => TL_ROOT . '/' . $strFile,
+						'error'    => $file['error'],
+						'size'     => $file['size'],
+						'uploaded' => true,
+						'uuid'     => \String::binToUuid($objFile->uuid)
+					);
 
 					// Add a log entry
 					$this->log('File "'.$file['name'].'" has been moved to "'.$strUploadFolder.'"', __METHOD__, TL_FILES);
@@ -281,8 +283,6 @@ class FormFileUpload extends \Widget implements \uploadable
 	 * Generate the widget and return it as string
 	 *
 	 * @return string The widget markup
-	 *
-	 * @deprecated The logic has been moved into the template (see #6834)
 	 */
 	public function generate()
 	{

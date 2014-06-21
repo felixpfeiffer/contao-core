@@ -81,6 +81,14 @@
         <source>Hide the article if a member is logged in.</source>
         <target>Скрыть статью, если участник вошел в систему.</target>
       </trans-unit>
+      <trans-unit id="tl_article.customTpl.0">
+        <source>Custom article template</source>
+        <target>Пользовательский шаблон статьи</target>
+      </trans-unit>
+      <trans-unit id="tl_article.customTpl.1">
+        <source>Here you can overwrite the default article template.</source>
+        <target>Вы можете переписать шаблон статьи умолчанию.</target>
+      </trans-unit>
       <trans-unit id="tl_article.protected.0">
         <source>Protect article</source>
         <target>Защитить статью</target>
@@ -161,6 +169,10 @@
         <source>Article teaser</source>
         <target>Анонс статьи</target>
       </trans-unit>
+      <trans-unit id="tl_article.template_legend">
+        <source>Template settings</source>
+        <target>Настройки шаблона</target>
+      </trans-unit>
       <trans-unit id="tl_article.protected_legend">
         <source>Access protection</source>
         <target>Защита доступа</target>
@@ -195,23 +207,23 @@
       </trans-unit>
       <trans-unit id="tl_article.header">
         <source>Header</source>
-        <target>Верхнем колонтитуле</target>
+        <target>Верхний колонтитул</target>
       </trans-unit>
       <trans-unit id="tl_article.left">
         <source>Left column</source>
-        <target>Левой колонке</target>
+        <target>Левая колонка</target>
       </trans-unit>
       <trans-unit id="tl_article.main">
         <source>Main column</source>
-        <target>Основной колонке</target>
+        <target>Основная колонка</target>
       </trans-unit>
       <trans-unit id="tl_article.right">
         <source>Right column</source>
-        <target>Правой колонке</target>
+        <target>Правая колонка</target>
       </trans-unit>
       <trans-unit id="tl_article.footer">
         <source>Footer</source>
-        <target>Нижнем колонтитуле</target>
+        <target>Нижний колонтитул</target>
       </trans-unit>
       <trans-unit id="tl_article.new.0">
         <source>New article</source>

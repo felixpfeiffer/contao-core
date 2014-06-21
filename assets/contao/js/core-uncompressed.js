@@ -419,7 +419,24 @@ var AjaxRequest =
 				}).inject($(el).getParent('div').getParent('div'), 'after');
 
 				// Execute scripts after the DOM has been updated
-				if (json.javascript) Browser.exec(json.javascript);
+				if (json.javascript) {
+
+					// Use Asset.javascript() instead of document.write() to load a
+					// JavaScript file and re-execude the code after it has been loaded
+					document.write = function(str) {
+						var src = '';
+						str.replace(/<script src="([^"]+)"/i, function(all, match){
+							src = match;
+						});
+						src && Asset.javascript(src, {
+							onLoad: function() {
+								Browser.exec(json.javascript);
+							}
+						});
+					};
+
+					Browser.exec(json.javascript);
+				}
 
 				el.value = 1;
 				el.checked = 'checked';
@@ -1650,6 +1667,7 @@ var Backend =
 				tr.getElement('.tl_select_column').destroy();
 				new Chosen(tr.getElement('select.tl_select'));
 				Stylect.convertSelects();
+				Backend.convertEnableModules();
 				break;
 			case 'up':
 				if (tr = parent.getPrevious('tr')) {
@@ -1983,7 +2001,9 @@ var Backend =
 	 * Convert the "enable module" checkboxes
 	 */
 	convertEnableModules: function() {
-		$$('img.mw_enable').each(function(el) {
+		$$('img.mw_enable').filter(function(el) {
+			return !el.hasEvent('click');
+		}).each(function(el) {
 			el.addEvent('click', function() {
 				Backend.getScrollOffset();
 				var cbx = el.getNext('input');

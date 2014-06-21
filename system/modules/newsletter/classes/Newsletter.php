@@ -96,8 +96,8 @@ class Newsletter extends \Backend
 		}
 
 		// Replace insert tags
-		$html = $this->replaceInsertTags($objNewsletter->content);
-		$text = $this->replaceInsertTags($objNewsletter->text);
+		$html = $this->replaceInsertTags($objNewsletter->content, false);
+		$text = $this->replaceInsertTags($objNewsletter->text, false);
 
 		// Convert relative URLs
 		if ($objNewsletter->externalImages)
@@ -419,8 +419,8 @@ class Newsletter extends \Backend
 		$this->import('BackendUser', 'User');
 		$class = $this->User->uploader;
 
-		// See #4086
-		if (!class_exists($class))
+		// See #4086 and #7046
+		if (!class_exists($class) || $class == 'DropZone')
 		{
 			$class = 'FileUpload';
 		}

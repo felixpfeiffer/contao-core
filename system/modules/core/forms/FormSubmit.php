@@ -93,6 +93,11 @@ class FormSubmit extends \Widget
 	 */
 	public function parse($arrAttributes=null)
 	{
+		if ($this->tableless)
+		{
+			$this->strClass = trim('submit_container ' . $this->strClass);
+		}
+
 		if ($this->imageSubmit && $this->singleSRC != '')
 		{
 			$objModel = \FilesModel::findByUuid($this->singleSRC);
@@ -118,8 +123,6 @@ class FormSubmit extends \Widget
 	 * Generate the widget and return it as string
 	 *
 	 * @return string The widget markup
-	 *
-	 * @deprecated The logic has been moved into the template (see #6834)
 	 */
 	public function generate()
 	{

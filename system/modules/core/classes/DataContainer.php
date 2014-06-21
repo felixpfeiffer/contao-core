@@ -453,13 +453,21 @@ class DataContainer extends \Backend
 		$updateMode = '';
 
 		// Replace the textarea with an RTE instance
-		if (isset($arrData['eval']['rte']))
+		if (!empty($arrData['eval']['rte']))
 		{
 			list ($file, $type) = explode('|', $arrData['eval']['rte'], 2);
 
 			if (!file_exists(TL_ROOT . '/system/config/' . $file . '.php'))
 			{
 				throw new \Exception(sprintf('Cannot find editor configuration file "%s.php"', $file));
+			}
+
+			// Backwards compatibility
+			$language = substr($GLOBALS['TL_LANGUAGE'], 0, 2);
+
+			if (!file_exists(TL_ROOT . '/assets/tinymce/langs/' . $language . '.js'))
+			{
+				$language = 'en';
 			}
 
 			$selector = 'ctrl_' . $this->strInputName;

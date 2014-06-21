@@ -213,7 +213,7 @@ class Calendar extends \Frontend
 					$objItem->title = $event['title'];
 					$objItem->link = $event['link'];
 					$objItem->published = $event['tstamp'];
-					$objItem->start = $event['start'];
+					$objItem->begin = $event['begin'];
 					$objItem->end = $event['end'];
 					$objItem->author = $event['authorName'];
 
@@ -236,7 +236,7 @@ class Calendar extends \Frontend
 						$strDescription = $event['teaser'];
 					}
 
-					$strDescription = $this->replaceInsertTags($strDescription);
+					$strDescription = $this->replaceInsertTags($strDescription, false);
 					$objItem->description = $this->convertRelativeUrls($strDescription, $strLink);
 
 					if (is_array($event['enclosure']))
@@ -253,7 +253,7 @@ class Calendar extends \Frontend
 		}
 
 		// Create the file
-		\File::putContent('share/' . $strFile . '.xml', $this->replaceInsertTags($objFeed->$strType()));
+		\File::putContent('share/' . $strFile . '.xml', $this->replaceInsertTags($objFeed->$strType(), false));
 	}
 
 

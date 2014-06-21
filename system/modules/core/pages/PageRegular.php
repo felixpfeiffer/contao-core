@@ -157,7 +157,7 @@ class PageRegular extends \Frontend
 		}
 
 		// Set the page title and description AFTER the modules have been generated
-		$this->Template->mainTitle = $objPage->rootTitle;
+		$this->Template->mainTitle = $objPage->rootPageTitle;
 		$this->Template->pageTitle = $objPage->pageTitle ?: $objPage->title;
 
 		// Meta robots tag
@@ -168,7 +168,7 @@ class PageRegular extends \Frontend
 		$this->Template->pageTitle = str_replace('[-]', '', $this->Template->pageTitle);
 
 		// Assign the title and description
-		$this->Template->title = $objLayout->titleTag ?: '{{page::pageTitle}} - {{page::mainTitle}}';
+		$this->Template->title = $objLayout->titleTag ?: '{{page::pageTitle}} - {{page::rootPageTitle}}';
 		$this->Template->description = str_replace(array("\n", "\r", '"'), array(' ' , '', ''), $objPage->description);
 
 		// Body onload and body classes

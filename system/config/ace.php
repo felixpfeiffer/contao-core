@@ -20,7 +20,7 @@ if ($GLOBALS['TL_CONFIG']['useCE']):
 ?>
 <script>window.ace || document.write('<script src="<?php echo TL_ASSETS_URL; ?>assets/ace/<?php echo $GLOBALS['TL_ASSETS']['ACE']; ?>/ace.js" charset="utf-8">\x3C/script>')</script>
 <script>
-window.addEvent('domready', function() {
+window.ace && window.addEvent('domready', function() {
   var ta = $('<?php echo $selector; ?>');
 
   var div = new Element('div', {

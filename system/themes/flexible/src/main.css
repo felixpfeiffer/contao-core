@@ -365,7 +365,7 @@ input[type=search]::-webkit-search-decoration {
 	left:0;
 	bottom:0;
 	width:100%;
-	height:52px;
+	max-height:52px;
 }
 .tl_submit_container {
 	padding:12px 18px;
@@ -591,6 +591,9 @@ input[type=search]::-webkit-search-decoration {
 }
 .tl_content pre.disabled {
 	color:#a6a6a6;
+}
+.tl_content .ce_text a {
+	color:#77ac45;
 }
 .tl_content span.comment {
 	color:#4b85ba;
@@ -1483,6 +1486,7 @@ fieldset.collapsed > legend {
 	border:3px dashed #ddd;
 }
 .dz-message {
+	cursor:pointer;
 	padding:36px 18px;
 	-moz-transition:all .15s linear;
 	-webkit-transition:all .15s linear;
@@ -1685,6 +1689,16 @@ fieldset.collapsed > legend {
 		position:relative;
 		cursor:pointer;
 	}
+	.collapsible h1:after {
+		content:"";
+		display:block;
+		width:16px;
+		height:16px;
+		position:absolute;
+		top:4px;
+		right:6px;
+		background:url("images/arrows.png") left top no-repeat;
+	}
 	.collapsible_area {
 		display:none;
 	}
@@ -1692,14 +1706,16 @@ fieldset.collapsed > legend {
 		border-radius:3px 3px 0 0 !important;
 		border-bottom:0;
 	}
+	.collapsible.xpnd h1:after {
+		background-position:left bottom;
+	}
 	.collapsible.xpnd .collapsible_area {
 		display:block;
 	}
-	#tl_navigation .tl_level_2 a {
-		display:block;
-		line-height:inherit;
-		padding-top:3px;
-		padding-bottom:4px;
+	#tl_navigation .tl_level_2 li {
+		min-width:150px;
+		margin:1px 18px 6px 0;
+		display:inline-block;
 	}
 }
 
@@ -1817,6 +1833,9 @@ fieldset.collapsed > legend {
 	#tl_versions {
 		display:none;
 	}
+	.mac .tl_panel select {
+		max-width:none;
+	}
 	.tl_version_panel .tl_select {
 		width:136px;
 	}
@@ -1848,6 +1867,9 @@ fieldset.collapsed > legend {
 	}
 	.tl_file_list .ellipsis {
 		padding-right:10px;
+	}
+	#tl_navigation .tl_level_2 li {
+		min-width:110px;
 	}
 }
 

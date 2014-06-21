@@ -255,7 +255,7 @@
       </trans-unit>
       <trans-unit id="SEC.question2">
         <source>What is the sum of %d and %d?</source>
-        <target>Quelle est la somme de %d et %d?</target>
+        <target>Quelle est la somme de %d et %d ?</target>
       </trans-unit>
       <trans-unit id="SEC.question3">
         <source>Please calculate %d plus %d.</source>
@@ -1978,6 +1978,10 @@ Cet e-mail a été généré par Contao. Merci de ne pas y répondre directement
       <trans-unit id="MSC.totalPages">
         <source>Page %s of %s</source>
         <target>Page %s de %s</target>
+      </trans-unit>
+      <trans-unit id="MSC.global">
+        <source>global</source>
+        <target>global</target>
       </trans-unit>
       <trans-unit id="MSC.fileUploaded">
         <source>File %s uploaded successfully.</source>

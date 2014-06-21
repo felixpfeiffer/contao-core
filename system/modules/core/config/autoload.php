@@ -46,6 +46,23 @@ ClassLoader::addClasses(array
 	'Contao\Theme'                     => 'system/modules/core/classes/Theme.php',
 	'Contao\Versions'                  => 'system/modules/core/classes/Versions.php',
 
+	// Controllers
+	'Contao\BackendChangelog'          => 'system/modules/core/controllers/BackendChangelog.php',
+	'Contao\BackendConfirm'            => 'system/modules/core/controllers/BackendConfirm.php',
+	'Contao\BackendFile'               => 'system/modules/core/controllers/BackendFile.php',
+	'Contao\BackendHelp'               => 'system/modules/core/controllers/BackendHelp.php',
+	'Contao\BackendIndex'              => 'system/modules/core/controllers/BackendIndex.php',
+	'Contao\BackendInstall'            => 'system/modules/core/controllers/BackendInstall.php',
+	'Contao\BackendMain'               => 'system/modules/core/controllers/BackendMain.php',
+	'Contao\BackendPage'               => 'system/modules/core/controllers/BackendPage.php',
+	'Contao\BackendPassword'           => 'system/modules/core/controllers/BackendPassword.php',
+	'Contao\BackendPopup'              => 'system/modules/core/controllers/BackendPopup.php',
+	'Contao\BackendPreview'            => 'system/modules/core/controllers/BackendPreview.php',
+	'Contao\BackendSwitch'             => 'system/modules/core/controllers/BackendSwitch.php',
+	'Contao\FrontendCron'              => 'system/modules/core/controllers/FrontendCron.php',
+	'Contao\FrontendIndex'             => 'system/modules/core/controllers/FrontendIndex.php',
+	'Contao\FrontendShare'             => 'system/modules/core/controllers/FrontendShare.php',
+
 	// Drivers
 	'Contao\DC_File'                   => 'system/modules/core/drivers/DC_File.php',
 	'Contao\DC_Folder'                 => 'system/modules/core/drivers/DC_Folder.php',
@@ -97,6 +114,7 @@ ClassLoader::addClasses(array
 
 	// Library
 	'Contao\Automator'                 => 'system/modules/core/library/Contao/Automator.php',
+	'Contao\BaseTemplate'              => 'system/modules/core/library/Contao/BaseTemplate.php',
 	'Contao\Cache'                     => 'system/modules/core/library/Contao/Cache.php',
 	'Contao\ClassLoader'               => 'system/modules/core/library/Contao/ClassLoader.php',
 	'Contao\Combiner'                  => 'system/modules/core/library/Contao/Combiner.php',
@@ -145,7 +163,6 @@ ClassLoader::addClasses(array
 	'Contao\SortedIterator'            => 'system/modules/core/library/Contao/SortedIterator.php',
 	'Contao\String'                    => 'system/modules/core/library/Contao/String.php',
 	'Contao\System'                    => 'system/modules/core/library/Contao/System.php',
-	'Contao\Template\Base'             => 'system/modules/core/library/Contao/Template/Base.php',
 	'Contao\Template'                  => 'system/modules/core/library/Contao/Template.php',
 	'Contao\TemplateLoader'            => 'system/modules/core/library/Contao/TemplateLoader.php',
 	'Contao\User'                      => 'system/modules/core/library/Contao/User.php',
