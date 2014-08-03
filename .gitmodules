@@ -1,0 +1,3 @@
+[submodule "system/modules/downloadarchive"]
+	path = system/modules/downloadarchive
+	url = https://felixpfeiffer@github.com/felixpfeiffer/Contao-Downloadarchive.git
